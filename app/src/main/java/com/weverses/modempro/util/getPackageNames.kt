@@ -22,11 +22,9 @@ object getPackageNames {
         val thirdPartyPackageNames = mutableListOf<String>()
 
         for (packageInfo in packages) {
-            if (packageInfo.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM == 0) {
+            if (packageInfo.applicationInfo?.flags?.and(ApplicationInfo.FLAG_SYSTEM) == 0) {
                 val packageName = packageInfo.packageName
-                if (packageName != null) {
-                    thirdPartyPackageNames.add(packageName)
-                }
+                thirdPartyPackageNames.add(packageName)
             }
         }
 
